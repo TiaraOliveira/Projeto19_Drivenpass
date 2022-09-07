@@ -1,6 +1,6 @@
-import { createUser } from "../repositories/usersRepository.js";
+import { createUser } from "../repositories/usersRepositories";
 import passwordEncrypter from "../utils/passwordEncrypter";
-import {NextFunction, Request, Response } from "express";
+import {Request, Response } from "express";
 
 export default async function signUp(req: Request, res: Response){
     const {email, password, userName, pictureUrl} = req.body;
