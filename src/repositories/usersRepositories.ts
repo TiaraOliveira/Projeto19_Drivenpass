@@ -1,4 +1,4 @@
-import { prisma } from '../database';
+import { prisma } from '../postgress';
 
 export async function getUserByEmail(email: string){
     console.log(email)
