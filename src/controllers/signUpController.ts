@@ -3,6 +3,7 @@ import passwordEncrypter from "../utils/passwordEncrypter";
 import {Request, Response } from "express";
 
 export default async function signUp(req: Request, res: Response){
+    
     const {email, password, userName, pictureUrl} = req.body;
     const secret = passwordEncrypter(password);
     const user = {email, password: secret, userName, pictureUrl};

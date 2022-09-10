@@ -5,7 +5,7 @@ import {NextFunction, Request, Response } from "express";
 export default async function createCredentialValidator(req: Request, res: Response, next: NextFunction){ 
     
     const body = req.body; 
-    console.log(body) 
+  
     try{
         const result = await getUserByEmail(body.email);
         if(!result){

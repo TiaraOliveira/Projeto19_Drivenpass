@@ -2,9 +2,9 @@ import { getUserByEmail } from "../repositories/usersRepositories";
 import {NextFunction, Request, Response } from "express";
 
 export default async function signUpValidator(req: Request, res: Response, next: NextFunction){
-    console.log("atttti")
+   
     const body = req.body;
-    
+  
     try{
         const email = await getUserByEmail(body.email);
         
