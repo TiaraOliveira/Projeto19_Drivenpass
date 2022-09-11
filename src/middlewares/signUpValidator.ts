@@ -5,16 +5,8 @@ export default async function signUpValidator(req: Request, res: Response, next:
    
     const body = req.body;
   
-    try{
-        const email = await getUserByEmail(body.email);
-        
-        if(email){
-            return res.sendStatus(401);
-        } else {
-            next();
-        }
-        
-    } catch(error){
-        return res.status(501).send(error);
-    }
+    const email = await getUserByEmail(body.email);
+    if(email) throw {type: "error_conflict",  message: `Email Já cadastrado`}
+
+    next();
 };

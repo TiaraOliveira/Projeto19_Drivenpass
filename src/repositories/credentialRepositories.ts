@@ -1,9 +1,21 @@
 import { prisma } from '../postgress';
 import { TypeCredentiaCriptedlData } from '../types/credentialsTypes';
 
+
+export async function existscredentialTag(credentialTag: string) {
+  return await prisma.credential.findFirst({
+    where: {
+      credentialTag: credentialTag 
+     
+    },
+    
+  });
+}
+
 export async function insert(credential: TypeCredentiaCriptedlData, userId: number, password:string) {
-    console.log(password)
+ 
   await prisma.credential.create({ data: {userId, password, ...credential }});
+  
   
 }
 
@@ -15,22 +27,34 @@ export async function getAllCredential(userId: number,) {
     },
     
   });
+
+  
 }
 
-export async function findCredentialById(questionId: number, userId: number,) {
+export async function findCredentialById(credentialId: number, userId: number,) {
   return await prisma.credential.findUnique({
     where: {
-      id: questionId
+      id: credentialId
     },
     
   });
 }
 
 
-export async function deleteCredential(questionId: number, userId: number,) {
+export async function deleteCredential(credentialId: number, userId: number,) {
   return await prisma.credential.delete({
     where: {
-      id: questionId
+      id: credentialId
+    },
+    
+  });
+}
+
+export async function verifyidanduserId(credentialId: number, userId: number) {
+  return await prisma.credential.findFirst({
+    where: {
+      id: credentialId ,
+      userId: userId
     },
     
   });

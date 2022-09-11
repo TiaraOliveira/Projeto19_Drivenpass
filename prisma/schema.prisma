@@ -26,7 +26,6 @@ model safeNote {
   userId Int
   safeNotetitle String @unique
   text String
-  createdDate DateTime
   @@unique(fields: [userId, safeNotetitle], name: "safeNotes_identifier")
 }
 model credential {

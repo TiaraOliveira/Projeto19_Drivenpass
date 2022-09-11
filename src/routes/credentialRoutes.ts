@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { schemaValidator}  from "../middlewares/schemaValidator";
-import signIn from "../controllers/signInController";
 import createCredentailSchema from "../schemas/createCredentailSchema";
 import { createCredentials, searchcredential, searchcredentialbyid, deleteCredential } from "../controllers/credentialControllers";
 import validateUser from "../middlewares/tokenValidator"

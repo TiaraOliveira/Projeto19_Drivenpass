@@ -1,20 +1,20 @@
-import express, {json} from "express";
-import dotenv from "dotenv";
+
 import cors from "cors";
-import router from "./routes/index";
+import dotenv from "dotenv";
+import express, { json } from "express";
+import "express-async-errors";
 import errorHandler from "./middlewares/errorHandler";
-import "express-async-errors"
+import router from "./routes/index";
+dotenv.config();
 
-
-dotenv.config()
-
-const server = express();
-
-server.use(cors(), json());
-
-server.use(router);
-server.use(errorHandler);
+const app = express();
+app.use(json());
+app.use(cors());
+app.use(router);
+app.use(errorHandler);
 
 const PORT = Number(process.env.PORT) || 5000;
 
-server.listen(PORT, ()=>console.log(`Server running successfully at PORT ${PORT}.`))
+app.listen(PORT, () => {
+  console.log(`Server is online on the port: ${PORT}`);
+});

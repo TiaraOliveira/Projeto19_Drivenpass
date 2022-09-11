@@ -1,23 +1,18 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
 
-export default function errorHandler(
-  err: Error | any,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export default function errorHandler(error: any, req: Request, res: Response, next: NextFunction) {
   
-  if (err.type) {
-    return res.sendStatus(errorTypeToStatusCode(err.type));
+  if(error.type === "error_not_found") {
+    return res.status(404).send(error.message)
   }
 
-  return res.sendStatus(500);
-}
+  if(error.type === "error_bad_request") {
+    return res.status(400).send(error.message)
+  }
 
-function errorTypeToStatusCode(errorType: string) {
-  if (errorType === 'conflict') return 409;
-  if (errorType === 'not_found') return 404;
-  if (errorType === 'unauthorized') return 401;
-
-  return 400;
+  if(error.type === "error_conflict") {
+    return res.status(409).send(error.message)
+  }
+  
+  res.sendStatus(500)
 }

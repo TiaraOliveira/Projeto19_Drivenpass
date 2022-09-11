@@ -1,4 +1,4 @@
 import { card } from '@prisma/client';
 
-export type TypeCredentialData = Omit<card, 'id'>;
-export type TypeCredentiaCriptedlData = Omit<card, 'id' | 'userId'| 'password'>;
+export type TypeCardData = Omit<card, 'id'| 'userId'>;
+export type TypeCardCriptedlData = Omit<card, 'id' | 'userId'| 'password'>;
