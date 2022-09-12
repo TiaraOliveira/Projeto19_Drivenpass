@@ -38,6 +38,7 @@ export async function getCardbyid(cardId: number, userId: number,) {
        message: `Não pertence`}
        
   findid.password = cryptr.decrypt( findid.password)  
+  findid.cvc = cryptr.decrypt(findid.cvc) 
     return findid
 }
 
