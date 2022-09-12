@@ -9,9 +9,7 @@ export async function insert(safeNote: TypeSafeNoteData, userId: number) {
 
   if(verifiedexist) throw {type: "error_bad_request",
     message: `Titulo já existente`}
-    
-  
-    await SafeNotesRepositories.insert(safeNote, userId);
+  await SafeNotesRepositories.insert(safeNote, userId);
   
 }
 

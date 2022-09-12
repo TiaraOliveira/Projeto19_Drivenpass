@@ -18,7 +18,7 @@ export async function insert(card: TypeCardCriptedlData, userId: number, passwor
 export async function getCard(userId: number) {
 
   const sucess =  await cardRepositories.getAllCards(userId);
-console.log("sucess")
+
   if(!sucess) throw {type: "error_not_found",
     message: `Could not find specified!`}
     

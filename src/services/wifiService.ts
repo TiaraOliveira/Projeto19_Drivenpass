@@ -10,8 +10,7 @@ export async function insert(wifis: TypeWifiCriptedlData, userId: number, passwo
 
   if(verifiedexist) throw {type: "error_bad_request",
     message: `Titulo já existente`}
- 
-  await wifiRepositories.insert(wifis, userId, password);
+   await wifiRepositories.insert(wifis, userId, password);
   
 }
 
