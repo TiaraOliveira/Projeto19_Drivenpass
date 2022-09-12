@@ -8,9 +8,9 @@ import validateUser from "../middlewares/tokenValidator"
 const credentials = Router();
 
 credentials.post('/createcredential', schemaValidator(createCredentailSchema), validateUser, createCredentials);
-credentials.get('/searchcredential', schemaValidator(createCredentailSchema), validateUser, searchcredential);
-credentials.get('/searchcredential/:id', schemaValidator(createCredentailSchema), validateUser, searchcredentialbyid);
-credentials.delete('/deletecredential/:id', schemaValidator(createCredentailSchema), validateUser, deleteCredential);
+credentials.get('/searchcredential', validateUser, searchcredential);
+credentials.get('/searchcredential/:id',  validateUser, searchcredentialbyid);
+credentials.delete('/deletecredential/:id', validateUser, deleteCredential);
 
 export default credentials;
 
