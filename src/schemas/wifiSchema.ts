@@ -1,12 +1,12 @@
 import Joi from "joi";
-import { TypeCredentialData } from "../types/credentialsTypes";
+import { TypeWifiData } from "../types/wifiTypes";
 
 
-const createCredentailSchema = Joi.object<TypeCredentialData>({
-  userName: Joi.string().required(),
-  url: Joi.string().uri().required(),
-  password: Joi.string().required(),
-  credentialTag: Joi.string().required()
+const createCredentailSchema = Joi.object<TypeWifiData>({
+  networkName: Joi.string().required(),
+   password: Joi.string().required(),
+   wifiTag: Joi.string().required()
 });
   
 export default createCredentailSchema;
+

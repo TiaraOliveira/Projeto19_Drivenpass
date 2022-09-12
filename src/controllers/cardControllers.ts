@@ -5,13 +5,16 @@ import Cryptr from "cryptr"
 
 
 export async function createCard(req: Request, res: Response) {
-  
+ 
   const userId:number = Number(res.locals.userId.id);
  
   const card = req.body;
   const cryptr = new Cryptr("minha senha secreta")
   const password: string = cryptr.encrypt(card.password)
-  await cardService.insert(card, userId , password);
+  const cvc: string = cryptr.encrypt(card.cvc)
+
+
+  await cardService.insert(card, userId , password, cvc);
 
   res.sendStatus(201);
 }

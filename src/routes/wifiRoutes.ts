@@ -1,15 +1,15 @@
 import { Router } from "express";
 import { schemaValidator}  from "../middlewares/schemaValidator";
-import createCredentailSchema from "../schemas/createCredentailSchema";
-import { createCredentials, searchcredential, searchcredentialbyid, deleteCredential } from "../controllers/credentialControllers";
 import validateUser from "../middlewares/tokenValidator"
+import { createwifi, deletewifi, searchwifi, searchwifibyid } from "../controllers/wifiControllers";
+import wifiSchema from "../schemas/wifiSchema";
 
 
-const credentials = Router();
+const wifiRoutes = Router();
 
-credentials.post('/createcredential', schemaValidator(createCredentailSchema), validateUser, createCredentials);
-credentials.get('/searchcredential', schemaValidator(createCredentailSchema), validateUser, searchcredential);
-credentials.get('/searchcredential/:id', schemaValidator(createCredentailSchema), validateUser, searchcredentialbyid);
-credentials.delete('/deletecredential/:id', schemaValidator(createCredentailSchema), validateUser, deleteCredential);
+wifiRoutes.post('/createwifi', schemaValidator(wifiSchema), validateUser, createwifi);
+wifiRoutes.get('/searchwifi', schemaValidator(wifiSchema), validateUser, searchwifi);
+wifiRoutes.get('/searchwifi/:id', schemaValidator(wifiSchema), validateUser, searchwifibyid);
+wifiRoutes.delete('/deletewifi/:id', schemaValidator(wifiSchema), validateUser, deletewifi);
 
-export default credentials;
+export default wifiRoutes;

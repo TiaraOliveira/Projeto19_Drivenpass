@@ -1,6 +1,18 @@
 import { prisma } from '../postgress';
 import { TypeSafeNoteData } from '../types/safeNotesTypes';
 
+
+
+export async function existsTittle(safeNotetitle: string) {
+  return await prisma.safeNote.findFirst({
+    where: {
+      safeNotetitle: safeNotetitle 
+     
+    },
+    
+  });
+}
+
 export async function insert(safeNote: TypeSafeNoteData, userId: number) {
    
   await prisma.safeNote.create({ data: {userId,...safeNote }});
@@ -31,6 +43,16 @@ export async function deleteSafeNotes(safeNoteId: number, userId: number,) {
   return await prisma.safeNote.delete({
     where: {
       id: safeNoteId
+    },
+    
+  });
+}
+
+export async function verifyidanduserId(credentialId: number, userId: number) {
+  return await prisma.safeNote.findFirst({
+    where: {
+      id: credentialId ,
+      userId: userId
     },
     
   });

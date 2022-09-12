@@ -13,9 +13,7 @@ export async function existscredentialTag(credentialTag: string) {
 }
 
 export async function insert(credential: TypeCredentiaCriptedlData, userId: number, password:string) {
- 
-  await prisma.credential.create({ data: {userId, password, ...credential }});
-  
+  await prisma.credential.create({ data: {userId, ...credential, password, }});
   
 }
 
@@ -23,9 +21,8 @@ export async function insert(credential: TypeCredentiaCriptedlData, userId: numb
 export async function getAllCredential(userId: number,) {
   return await prisma.credential.findMany({
     where: {
-      userId: userId
-    },
-    
+      userId: userId, 
+      },
   });
 
   

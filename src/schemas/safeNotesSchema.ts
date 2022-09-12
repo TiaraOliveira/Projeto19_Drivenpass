@@ -3,8 +3,8 @@ import { TypeSafeNoteData } from "../types/safeNotesTypes";
 
 
 const createCredentailSchema = Joi.object<TypeSafeNoteData>({
-  safeNotetitle: Joi.string().required(),
-  text: Joi.string().required(),
+  safeNotetitle: Joi.string().max(50).required(),
+  text: Joi.string().max(50).required(),
 });
   
 export default createCredentailSchema;

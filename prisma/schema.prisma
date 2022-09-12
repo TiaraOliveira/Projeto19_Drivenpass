@@ -44,10 +44,10 @@ model card {
   id       Int    @id @default(autoincrement())
   author     users        @relation(fields: [userId], references: [id])
   userId Int
-  cardNumber Int
+  cardNumber String
   cardName String
-  cvc Int
-  expiratedDate DateTime
+  cvc String
+  expiratedDate String
   password String
   isVirtual Boolean
   type String

@@ -1,4 +1,4 @@
 import { wifi } from '@prisma/client';
 
-export type TypeCredentialData = Omit<wifi, 'id'>;
-export type TypeCredentiaCriptedlData = Omit<wifi, 'id' | 'userId'| 'password'>;
+export type TypeWifiData = Omit<wifi, 'id'>;
+export type TypeWifiCriptedlData = Omit<wifi, 'id' | 'userId'| 'password'>;

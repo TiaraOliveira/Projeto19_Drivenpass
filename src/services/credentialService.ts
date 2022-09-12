@@ -1,6 +1,7 @@
 import * as credentialRepositories from '../repositories/credentialRepositories';
 import { TypeCredentiaCriptedlData } from '../types/credentialsTypes';
-
+import Cryptr from "cryptr"
+const cryptr = new Cryptr("minha senha secreta")
 
 
 export async function insert(credential: TypeCredentiaCriptedlData, userId: number, password:string) {
@@ -8,15 +9,17 @@ export async function insert(credential: TypeCredentiaCriptedlData, userId: numb
 
   if(verifiedexist) throw {type: "error_bad_request",
     message: `Titulo já existente`}
-
+    
   await credentialRepositories.insert(credential, userId, password);
   
 }
 
 export async function getCredential(userId: number,) {
   const sucess = await credentialRepositories.getAllCredential(userId);
-  if(sucess) throw {type: "error_not_found",
+  if(!sucess) throw {type: "error_not_found",
     message: `Could not find specified!`}
+    
+    sucess.forEach(e => {return e.password = cryptr.decrypt(e.password);})
     return sucess
 }
 
@@ -24,10 +27,16 @@ export async function getCredentialbyid(credentialId: number, userId: number,) {
   const findid = await credentialRepositories.findCredentialById(credentialId, userId);
 
   if(!findid) {
-    throw { type: 'error_not_found', message: 'Funcionário não encontrado'  }
+    throw { type: 'error_not_found', message: 'Id inexistente'  }
   }
+
+  findid.password = cryptr.decrypt( findid.password)  
     return findid
 }
+
+
+
+
 
 export async function deleteCredential(credentialId: number, userId: number,) {
   const findid = await credentialRepositories.findCredentialById(credentialId, userId);

@@ -1,15 +1,15 @@
 import { Router } from "express";
 import { schemaValidator}  from "../middlewares/schemaValidator";
-import createCredentailSchema from "../schemas/createCredentailSchema";
-import { createCredentials, searchcredential, searchcredentialbyid, deleteCredential } from "../controllers/credentialControllers";
 import validateUser from "../middlewares/tokenValidator"
+import safeNotesSchema from "../schemas/safeNotesSchema";
+import { createsafeNotesSchema, deletesafeNotesSchema, searchsafeNotesSchema, searchsafeNotesSchemabyid } from "../controllers/safeNotesControllers";
 
 
-const credentials = Router();
+const safeNotesRoutes = Router();
 
-credentials.post('/createcredential', schemaValidator(createCredentailSchema), validateUser, createCredentials);
-credentials.get('/searchcredential', schemaValidator(createCredentailSchema), validateUser, searchcredential);
-credentials.get('/searchcredential/:id', schemaValidator(createCredentailSchema), validateUser, searchcredentialbyid);
-credentials.delete('/deletecredential/:id', schemaValidator(createCredentailSchema), validateUser, deleteCredential);
+safeNotesRoutes.post('/createsafenote', schemaValidator(safeNotesSchema), validateUser, createsafeNotesSchema);
+safeNotesRoutes.get('/searchsafenote', schemaValidator(safeNotesSchema), validateUser, searchsafeNotesSchema);
+safeNotesRoutes.get('/searchsafenote/:id', schemaValidator(safeNotesSchema), validateUser, searchsafeNotesSchemabyid);
+safeNotesRoutes.delete('/deletesafenote/:id', schemaValidator(safeNotesSchema), validateUser, deletesafeNotesSchema);
 
-export default credentials;
+export default safeNotesRoutes;

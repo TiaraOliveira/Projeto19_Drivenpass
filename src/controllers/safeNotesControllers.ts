@@ -4,7 +4,7 @@ import Cryptr from "cryptr"
 
 
 
-export async function createCredentials(req: Request, res: Response) {
+export async function createsafeNotesSchema(req: Request, res: Response) {
   
   const userId:number = Number(res.locals.userId.id);
  
@@ -15,32 +15,32 @@ export async function createCredentials(req: Request, res: Response) {
   res.sendStatus(201);
 }
 
-export async function searchcredential(req: Request, res: Response) {
+export async function searchsafeNotesSchema(req: Request, res: Response) {
   
   const userId:number = Number(res.locals.userId.id);
  
-  const safeNotes = await safeNotesService.getCredential(userId);
+  const safeNotes = await safeNotesService.getSafeNotes(userId);
 
   res.status(200).send(safeNotes);
 }
 
-export async function searchcredentialbyid(req: Request, res: Response) {
+export async function searchsafeNotesSchemabyid(req: Request, res: Response) {
   
   const userId:number = Number(res.locals.userId.id);
   const safeNoteId: number = Number(req.params.id);
 
-  const safeNotes = await safeNotesService.getCredentialbyid(safeNoteId, userId);
+  const safeNotes = await safeNotesService.getSafeNoteslbyid(safeNoteId, userId);
 
   res.status(200).send(safeNotes);
 }
 
 
-export async function deleteCredential(req: Request, res: Response) {
+export async function deletesafeNotesSchema(req: Request, res: Response) {
   
   const userId:number = Number(res.locals.userId.id);
   const safeNoteId: number = Number(req.params.id);
 
-  await safeNotesService.deleteCredential(safeNoteId, userId);
+  await safeNotesService.deleteSafeNotes(safeNoteId, userId);
 
   res.sendStatus(201);
 }
