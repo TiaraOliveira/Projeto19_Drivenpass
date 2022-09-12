@@ -36,19 +36,19 @@ export async function getSafeNoteslbyid(safeNoteId: number, userId: number,) {
     return findid
 }
 
-export async function deleteSafeNotes(credentialId: number, userId: number,) {
+export async function deleteSafeNotes(safeNoteId: number, userId: number,) {
 
-  const findid = await SafeNotesRepositories.findSafeNotesById(credentialId, userId);
+  const findid = await SafeNotesRepositories.findSafeNotesById(safeNoteId, userId);
 
   if(!findid) {
     throw { type: 'error_not_found', message: 'Id não encontrado'  }
   }
 
-const belowsusers = await SafeNotesRepositories.verifyidanduserId(credentialId, userId)
+const belowsusers = await SafeNotesRepositories.verifyidanduserId(safeNoteId, userId)
    if(!belowsusers) throw {type: "error_bad_request",
         message: `Não pertence`}
 
-  const sucess = await SafeNotesRepositories.deleteSafeNotes(credentialId, userId);
+  const sucess = await SafeNotesRepositories.deleteSafeNotes(safeNoteId, userId);
   
   if(!sucess) throw {type: "error_bad_request",
     message: `Could not find specified!`}
