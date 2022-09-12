@@ -26,7 +26,7 @@ model safeNote {
   userId Int
   safeNotetitle String @unique
   text String
-  @@unique(fields: [userId, safeNotetitle], name: "safeNotes_identifier")
+ 
 }
 model credential {
   id       Int    @id @default(autoincrement())
@@ -36,7 +36,7 @@ model credential {
   url String
   password String
   credentialTag String
-  @@unique(fields: [userId, credentialTag], name: "safeNotes_identifier")
+  
 }
 
 
@@ -52,7 +52,7 @@ model card {
   isVirtual Boolean
   type String
   cardTag String
-  @@unique(fields: [userId, cardTag], name: "card_identifier")
+ 
 }
 
 model wifi {
