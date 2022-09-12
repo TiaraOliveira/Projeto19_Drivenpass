@@ -24,7 +24,7 @@ model safeNote {
   id       Int    @id @default(autoincrement())
   author     users        @relation(fields: [userId], references: [id])
   userId Int
-  safeNotetitle String @unique
+  safeNotetitle String 
   text String
  
 }

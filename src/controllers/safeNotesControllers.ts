@@ -11,7 +11,8 @@ export async function createsafeNotesSchema(req: Request, res: Response) {
   const safeNote = req.body;
   
   await safeNotesService.insert(safeNote, userId );
-
+  console.log(userId)
+  console.log(safeNote.safeNotetitle)
   res.sendStatus(201);
 }
 

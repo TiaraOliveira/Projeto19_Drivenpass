@@ -4,6 +4,8 @@ import { TypeSafeNoteData } from '../types/safeNotesTypes';
 
 
 export async function existsTittle(safeNotetitle: string, userId:number) {
+  console.log(userId)
+  console.log(safeNotetitle)
   return await prisma.safeNote.findFirst({
     where: {
       safeNotetitle: safeNotetitle,
@@ -12,6 +14,7 @@ export async function existsTittle(safeNotetitle: string, userId:number) {
     },
     
   });
+  
 }
 
 export async function insert(safeNote: TypeSafeNoteData, userId: number) {
