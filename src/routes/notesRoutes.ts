@@ -8,8 +8,8 @@ import { createsafeNotesSchema, deletesafeNotesSchema, searchsafeNotesSchema, se
 const safeNotesRoutes = Router();
 
 safeNotesRoutes.post('/createsafenote', schemaValidator(safeNotesSchema), validateUser, createsafeNotesSchema);
-safeNotesRoutes.get('/searchsafenote', schemaValidator(safeNotesSchema), validateUser, searchsafeNotesSchema);
-safeNotesRoutes.get('/searchsafenote/:id', schemaValidator(safeNotesSchema), validateUser, searchsafeNotesSchemabyid);
-safeNotesRoutes.delete('/deletesafenote/:id', schemaValidator(safeNotesSchema), validateUser, deletesafeNotesSchema);
+safeNotesRoutes.get('/searchsafenote', validateUser, searchsafeNotesSchema);
+safeNotesRoutes.get('/searchsafenote/:id', validateUser, searchsafeNotesSchemabyid);
+safeNotesRoutes.delete('/deletesafenote/:id', validateUser, deletesafeNotesSchema);
 
 export default safeNotesRoutes;

@@ -28,6 +28,11 @@ export async function getSafeNoteslbyid(safeNoteId: number, userId: number,) {
   if(!findid) {
     throw { type: 'error_not_found', message: 'Id inexistente'  }
   }
+  const belowsusers = await SafeNotesRepositories.verifyidanduserId(safeNoteId, userId)
+   if(!belowsusers) throw {type: "error_bad_request",
+        message: `Não pertence`}
+
+
     return findid
 }
 

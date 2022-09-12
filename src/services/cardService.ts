@@ -33,7 +33,10 @@ export async function getCardbyid(cardId: number, userId: number,) {
   if(!findid) {
     throw { type: 'error_not_found', message: 'Id inexistente'  }
   }
-
+  const belowsusers = await cardRepositories.verifyidanduserId(cardId, userId)
+  if(!belowsusers) throw {type: "error_bad_request",
+       message: `Não pertence`}
+       
   findid.password = cryptr.decrypt( findid.password)  
     return findid
 }

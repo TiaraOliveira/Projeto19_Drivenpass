@@ -7,8 +7,8 @@ import validateUser from "../middlewares/tokenValidator"
 const cardRouters = Router();
 
 cardRouters.post('/createcard', schemaValidator(createCardSchema), validateUser, createCard);
-cardRouters.get('/searchcard', schemaValidator(createCardSchema), validateUser, searchCard);
-cardRouters.get('/searchcard/:id', schemaValidator(createCardSchema), validateUser, searchCardbyid);
-cardRouters.delete('/deletecard/:id', schemaValidator(createCardSchema), validateUser, deleteCard);
+cardRouters.get('/searchcard', validateUser, searchCard);
+cardRouters.get('/searchcard/:id', validateUser, searchCardbyid);
+cardRouters.delete('/deletecard/:id', validateUser, deleteCard);
 
 export default cardRouters;

@@ -8,8 +8,8 @@ import wifiSchema from "../schemas/wifiSchema";
 const wifiRoutes = Router();
 
 wifiRoutes.post('/createwifi', schemaValidator(wifiSchema), validateUser, createwifi);
-wifiRoutes.get('/searchwifi', schemaValidator(wifiSchema), validateUser, searchwifi);
-wifiRoutes.get('/searchwifi/:id', schemaValidator(wifiSchema), validateUser, searchwifibyid);
-wifiRoutes.delete('/deletewifi/:id', schemaValidator(wifiSchema), validateUser, deletewifi);
+wifiRoutes.get('/searchwifi', validateUser, searchwifi);
+wifiRoutes.get('/searchwifi/:id', validateUser, searchwifibyid);
+wifiRoutes.delete('/deletewifi/:id', validateUser, deletewifi);
 
 export default wifiRoutes;
