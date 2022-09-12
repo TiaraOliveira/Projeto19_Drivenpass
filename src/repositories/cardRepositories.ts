@@ -3,11 +3,11 @@ import { TypeCardCriptedlData } from '../types/cardTypes';
 
 
 
-export async function existscardTag(cardTag: string) {
+export async function existscardTag(cardTag: string, userId: number) {
   return await prisma.card.findFirst({
     where: {
-      cardTag: cardTag 
-     
+      cardTag: cardTag, 
+      userId: userId, 
     },
     
   });

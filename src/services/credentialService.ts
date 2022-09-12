@@ -5,7 +5,7 @@ const cryptr = new Cryptr("minha senha secreta")
 
 
 export async function insert(credential: TypeCredentiaCriptedlData, userId: number, password:string) {
-  const verifiedexist =  await credentialRepositories.existscredentialTag(credential.credentialTag)
+  const verifiedexist =  await credentialRepositories.existscredentialTag(credential.credentialTag, userId)
 
   if(verifiedexist) throw {type: "error_bad_request",
     message: `Titulo já existente`}

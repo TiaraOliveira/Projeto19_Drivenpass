@@ -5,7 +5,7 @@ import { TypeSafeNoteData } from '../types/safeNotesTypes';
 
 export async function insert(safeNote: TypeSafeNoteData, userId: number) {
  
- const verifiedexist =  await SafeNotesRepositories.existsTittle(safeNote.safeNotetitle)
+ const verifiedexist =  await SafeNotesRepositories.existsTittle(safeNote.safeNotetitle, userId)
 
   if(verifiedexist) throw {type: "error_bad_request",
     message: `Titulo já existente`}

@@ -4,10 +4,11 @@ import { TypeWifiCriptedlData } from '../types/wifiTypes';
 
 
 
-export async function existwifiTag(wifiTag: string) {
+export async function existwifiTag(wifiTag: string, userId: number,) {
   return await prisma.wifi.findFirst({
     where: {
-      wifiTag: wifiTag 
+      wifiTag: wifiTag, 
+      userId:userId 
      
     },
     

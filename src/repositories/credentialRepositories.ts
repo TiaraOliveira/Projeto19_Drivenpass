@@ -2,11 +2,11 @@ import { prisma } from '../postgress';
 import { TypeCredentiaCriptedlData } from '../types/credentialsTypes';
 
 
-export async function existscredentialTag(credentialTag: string) {
+export async function existscredentialTag(credentialTag: string, userId: number) {
   return await prisma.credential.findFirst({
     where: {
-      credentialTag: credentialTag 
-     
+      credentialTag: credentialTag,  
+      userId: userId, 
     },
     
   });

@@ -6,7 +6,7 @@ const cryptr = new Cryptr("minha senha secreta")
 export async function insert(card: TypeCardCriptedlData, userId: number, password:string, cvc: string) {
 
  
-  const verifiedexist =  await cardRepositories.existscardTag(card.cardTag)
+  const verifiedexist =  await cardRepositories.existscardTag(card.cardTag, userId)
 
   if(verifiedexist) throw {type: "error_bad_request",
     message: `Titulo já existente`}

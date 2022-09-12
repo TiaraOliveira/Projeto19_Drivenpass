@@ -6,7 +6,7 @@ const cryptr = new Cryptr("minha senha secreta")
 
 export async function insert(wifis: TypeWifiCriptedlData, userId: number, password:string) {
  
-  const verifiedexist =  await wifiRepositories.existwifiTag(wifis.wifiTag)
+  const verifiedexist =  await wifiRepositories.existwifiTag(wifis.wifiTag, userId)
 
   if(verifiedexist) throw {type: "error_bad_request",
     message: `Titulo já existente`}

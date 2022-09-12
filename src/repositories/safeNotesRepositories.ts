@@ -3,10 +3,11 @@ import { TypeSafeNoteData } from '../types/safeNotesTypes';
 
 
 
-export async function existsTittle(safeNotetitle: string) {
+export async function existsTittle(safeNotetitle: string, userId:number) {
   return await prisma.safeNote.findFirst({
     where: {
-      safeNotetitle: safeNotetitle 
+      safeNotetitle: safeNotetitle,
+      userId:userId 
      
     },
     
